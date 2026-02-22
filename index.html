@@ -18,6 +18,24 @@
         a.legal:hover { color: #ff2a4b; }
     </style>
 </head>
+<div id="onboarding-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; text-align:center; flex-direction:column; justify-content:center; align-items:center;">
+        <h1 style="color:#00ff41; text-shadow: 0 0 20px #00ff41; font-size: 3rem;">NODE INSTALLED!</h1>
+        <p style="color:#fff; font-size:1.5rem;">CRITICAL STEP: You MUST pin the extension to start mining.</p>
+        <div style="margin: 30px; border: 2px dashed #ff2a4b; padding: 20px; background:#111;">
+            <p>1. Click the <b>Puzzle Icon 🧩</b> in your Chrome toolbar.</p>
+            <p>2. Click the <b>Pin Icon 📌</b> next to ClawMiner.</p>
+            <p>3. Open the extension to receive your first Daily Bonus!</p>
+        </div>
+        <button onclick="document.getElementById('onboarding-overlay').style.display='none'" class="btn" style="background:#444; color:#fff;">I have pinned it</button>
+    </div>
+
+    <script>
+        // 嗅探 URL，如果是插件安装后跳过来的，就弹出引导
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('installed') === 'true') {
+            document.getElementById('onboarding-overlay').style.display = 'flex';
+        }
+    </script>
 <body>
 
     <div class="hero">
